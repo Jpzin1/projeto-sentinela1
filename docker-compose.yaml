@@ -1,0 +1,11 @@
+# projeto-sentinela/docker-compose.yml
+
+version: '3.8'
+
+services:
+  sentinel-server:
+    build: ./sentinel-server  # Diz ao Docker para construir a imagem a partir da pasta sentinel-server
+    ports:
+      - "5000:5000"         # Mapeia a porta 5000 do seu PC para a porta 5000 do contêiner
+    volumes:
+      - ./sentinel-server:/app # Monta a pasta local dentro do contêiner para vermos as alterações em tempo realJ

@@ -1,0 +1,22 @@
+# sentinel-server/Dockerfile
+
+# 1. Use uma imagem oficial do Python como base
+FROM python:3.11-slim
+
+# 2. Defina o diretório de trabalho dentro do contêiner
+WORKDIR /app
+
+# 3. Copie o arquivo de requisitos para o contêiner
+COPY requirements.txt .
+
+# 4. Instale as bibliotecas Python necessárias
+RUN pip install --no-cache-dir -r requirements.txt
+
+# 5. Copie o resto do código da aplicação para o contêiner
+COPY . .
+
+# 6. Exponha a porta que o Flask vai usar
+EXPOSE 5000
+
+# 7. Defina o comando para rodar a aplicação quando o contêiner iniciar
+CMD ["python", "app.py"]
